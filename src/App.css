@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  margin: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  width: 500px;
+  max-width: 100%;
+  height: 50px;
+  border-radius: 0;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 22px;
+  border: 1px solid #000000;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input:last-child {
+  margin-bottom: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+input::placeholder,
+input::-ms-input-placeholder,
+input::-webkit-input-placeholder,
+input::-moz-placeholder {
+  color: #9E9E9E;
+}
+
+input:focus, input:active {
+  border-color: #2181F8;
+}
+
+.errorState input {
+  border-color: #ff3644;
+}
+
+button {
+  width: 150px;
+  height: 20px;
+  margin-bottom: 30px;
+}
+
+label {
+  color: black;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-weight: 500;
+  margin-bottom: 10px;
 }
