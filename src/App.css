@@ -110,7 +110,7 @@ input:focus, input:active {
   border-color: #2181F8;
 }
 
-.errorState input {
+.errorState input:not([type="submit"]):not([type="reset"]) {
   border-color: #ff3644;
 }
 
