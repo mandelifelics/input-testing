@@ -35,8 +35,6 @@ function App() {
         <input onClick={onClickDate} type="time"/>
         <input type="file"/>
         <input type="image" src={`https://dummyimage.com/500x40/000/ffffff.jpg&text=Input image submit`} alt="Тут должна быть картинка"/>
-        <input type="submit"/>
-        <input type="reset"/>
       </form>
     </div>
   );
