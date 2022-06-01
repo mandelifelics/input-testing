@@ -15,7 +15,7 @@ function App() {
   const changeErrorInputsState = () => setErrorState(!errorState);
   return (
     <div className="App">
-      <h1>EP inputs example</h1>
+      <h1>EP inputs example some text</h1>
       <button type="button" onClick={changeErrorInputsState}>Show error inputs state</button>
       <form action="/?default" method="get" onSubmit={onSubmit} className={errorState ? "errorState" : ""}>
         <input placeholder={`Input default without type`}/>
