@@ -33,7 +33,7 @@ function App() {
     { label: 'Search', value: "", params: { type: 'search', name: 'search', placeholder: 'Input type="search"', onChange: handleClick}},
     { label: 'Number', value: "", params: { step: "0.01", min: "0", type: 'number', name: 'number', placeholder: 'Input type="number"', onChange: handleClick}},
     { label: 'Color', value: "", params: { type: 'color', name: 'color', onChange: handleClick}},
-    { label: 'Range', value: "", params: { type: 'range', name: 'range', min: 0, max: 100, step: 10, onChange: handleClick}},
+    { label: 'Range', value: "", params: { type: 'range', name: 'range', min: 0, max: 100, step: 0.1, onChange: handleClick}},
     { label: 'Date', value: "", params: { type: 'date', name: 'date', onClick: onClickDate, onChange: handleClick }, paramsCustom: {className: "input-date"}},
     { label: 'Datetime local', value: "", params: { type: 'datetime-local', name: 'time_local', onClick: onClickDate, onChange: handleClick }},
     { label: 'Time', value: "", params: { type: 'time', name: 'time', onClick: onClickDate, onChange: handleClick }},
