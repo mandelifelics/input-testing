@@ -1,0 +1,60 @@
+// @import "./Reset";
+@import "./Main";
+@import "./Inputs";
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.col{
+  width: 50%;
+  padding: 0 10px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.inputList{
+  list-style: none;
+
+  li{
+    display: flex;
+    padding: 10px 0;
+
+    input[type="file"],
+    input[type="image"]{
+      max-width: 100%;
+    }
+
+    &:nth-child(odd){
+      background: rgb(255, 250, 228);
+    }
+  }
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: black;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 10px;
+}
+
+.errorState input:not([type="submit"]):not([type="reset"]):not([type="color"]) {
+  border-color: #ff3644;
+}
+
+nav{
+  label{
+    display: inline-block;
+  }
+}

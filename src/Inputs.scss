@@ -1,0 +1,496 @@
+@use "sass:math";
+
+$track-color: green !default;
+$thumb-color: rgb(252, 110, 27) !default;
+
+$thumb-radius: 12px !default;
+$thumb-height: 40px !default;
+$thumb-width: 24px !default;
+$thumb-shadow-size: 4px !default;
+$thumb-shadow-blur: 4px !default;
+$thumb-shadow-color: rgba(0, 0, 0, .2) !default;
+$thumb-border-width: 2px !default;
+$thumb-border-color: #82cdff !default;
+
+$track-width: 100% !default;
+$track-height: 8px !default;
+$track-shadow-size: 1px !default;
+$track-shadow-blur: 1px !default;
+$track-shadow-color: rgba(0, 0, 0, .2) !default;
+$track-border-width: 2px !default;
+$track-border-color: #cfd8dc !default;
+
+$track-radius: 5px !default;
+$contrast: 5% !default;
+
+@mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+  box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color, 0 0 $shadow-size lighten($shadow-color, 5%);
+}
+
+@mixin track {
+  cursor: default;
+  height: $track-height;
+  transition: all .2s ease;
+  width: $track-width;
+}
+
+@mixin thumb {
+  @include shadow($thumb-shadow-size, $thumb-shadow-blur, $thumb-shadow-color);
+  background: $thumb-color;
+  border: $thumb-border-width solid $thumb-border-color;
+  border-radius: $thumb-radius;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: $thumb-height;
+  width: $thumb-width;
+}
+
+:root {
+    --input-border: #8b8a8b;
+    --input-focus-h: 245;
+    --input-focus-s: 100%;
+    --input-focus-l: 42%;
+}
+
+input[type="time"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="number"],
+input[type="search"],
+input[type="email"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"] {
+  width: 100%;
+  min-width: 250px;
+  height: 40px;
+  padding: 10px 15px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  vertical-align: middle;
+  border-radius: 0;
+  outline: none;
+  text-align: left;
+}
+
+.customized{
+    @media (max-width: 767px) {
+        padding-top: 10px!important;
+    }
+
+    input:disabled,
+    .disabled{
+        cursor: default!important;
+    }
+
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="number"],
+    input[type="search"],
+    input[type="email"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"] {
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    input[type="search"]{
+        &::-webkit-search-cancel-button{
+            display: none;
+        }
+    }
+    
+
+    // NUMBER - Hide webkit buttons
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    // NUMBER - Hide mozilla buttons
+    input[type=number]{
+        -moz-appearance:textfield;
+    }
+
+    // RANGE - Hide mozilla buttons
+    input[type="range"]{
+        -webkit-appearance: none;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    // DATE, TIME - style
+    input[type="datetime-local"],
+    input[type="time"],
+    input[type="date"]{
+        &::-webkit-calendar-picker-indicator{
+            display: none;
+        }
+
+        &::-webkit-date-and-time-value {
+            text-align: left;
+        }
+    }
+
+    input[type="image"]{
+        border-radius: 0;
+    }
+}
+
+.customized1{
+    // Disabled style for all
+    input:disabled,
+    .disabled{
+        opacity: 0.4;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active
+    {
+        -webkit-text-fill-color: inherit !important;
+        box-shadow: 0 0 0 50px white inset !important;
+    }
+
+    input::placeholder,
+    input::-webkit-input-placeholder,
+    input::-moz-placeholder {
+      color: #9E9E9E;
+    }
+
+    // Focus style for all
+    input:focus:not(:disabled) {
+        box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8);
+        transition: 180ms box-shadow ease-in-out;
+    }
+
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="number"],
+    input[type="search"],
+    input[type="email"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"] {
+        color: black;
+        border: 1px solid #000;
+        background: white;
+    }
+
+    // White background on IOS
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="search"]{
+        box-shadow: inset 0 0 500px white;
+    }
+
+    // RANGE - Hide mozilla buttons
+    input[type="range"]{   
+
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 3px;
+            background: #2181F8;
+            border: 0;
+            border-radius: 0;
+        }
+    
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            margin-top: -7px;
+            border: none;
+            border-radius: 50%;
+            background: #2181F8;
+            box-shadow: inset 0 0 50px #2181F8;
+            cursor: pointer;
+        }
+    
+        &:-moz-focusring {
+            outline: 1px solid white;
+            outline-offset: -1px;
+        }
+    
+        &::-moz-range-track {
+            width: 100%;
+            height: 3px;
+            background: #2181F8;
+            border: 0;
+            border-radius: 3px;
+        }
+    
+        &::-moz-range-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #2181F8;
+            margin-top: -7px;
+            cursor: pointer;
+        }
+    }
+
+    .btn-file{
+        position: relative;
+        padding: 15px 25px;
+        cursor: pointer;
+        background-color: #2f2f2f;
+        border-color: #2f2f2f;
+        color: #fff;
+        font-size: 18px;
+
+        input[type="file"]{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+
+            &::-webkit-file-upload-button{
+                cursor: pointer;
+            }
+            &::-moz-file-upload-button{
+                cursor: pointer;
+            }
+        }
+    }
+
+    input[type="color"]{
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        padding: 10px;
+        background: #F5F5F5;
+        border: 1px solid #E0E0E0;
+        border-radius: 0;
+
+        &::-webkit-color-swatch-wrapper{
+            padding: 0;
+        }
+
+        &::-webkit-color-swatch{
+            border: none;
+        }
+    }
+}
+
+
+.customized2{
+    // Disabled style for all
+    input:disabled,
+    .disabled{
+        opacity: 0.6;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active
+    {
+        -webkit-text-fill-color: inherit !important;
+        box-shadow: 0 0 0 50px black inset !important;
+    }
+
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="number"],
+    input[type="search"],
+    input[type="email"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="password"] {
+        color: white;
+        border: 3px solid green;
+        background: black;
+    }
+
+    input::placeholder,
+    input::-webkit-input-placeholder,
+    input::-moz-placeholder {
+      color: white;
+    }
+
+    // White background on IOS
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="date"],
+    input[type="search"]{
+        box-shadow: inset 0 0 500px black;
+    }
+
+    // Focus style for all
+    input:focus:not(:disabled) {
+        box-shadow: 0 0 0 3px rgba(255, 81, 0, 0.856);
+        transition: 150ms box-shadow ease-in-out;
+    }
+
+    // RANGE - Hide mozilla buttons
+    @mixin track1 {
+        width: 100%;
+        height: 10px;
+        background: #b8f821;
+        border: 0;
+        border-radius: 5px;
+    }
+
+    @mixin thumb1 {
+        appearance: none;
+        height: 40px;
+        width: 15px;
+        margin-top: -16px;
+        border: 2px solid #8b8a8b;
+        border-radius: 5px;
+        background: #b8f821;
+        box-shadow: inset 0 0 50px #b8f821;
+        cursor: pointer;
+        box-sizing: border-box;
+    }
+
+    input[type="range"]{
+        -webkit-appearance: none;
+        background: transparent;
+
+        &::-webkit-slider-runnable-track {
+            @include track1;
+        }
+        
+        &::-webkit-slider-thumb {
+            @include thumb1;
+            -webkit-appearance: none;
+        }
+
+        &::-moz-range-track{
+            @include track1;
+        }
+
+        &::-moz-range-thumb{
+            @include thumb1;
+        }
+    }
+
+    .btn-file{
+        position: relative;
+        padding: 15px 25px;
+        cursor: pointer;
+        background-color: white;
+        border: 2px dotted #7354ff;
+        color: black;
+        font-size: 18px;
+        border-radius: 16px;
+
+        input[type="file"]{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+
+            &::-webkit-file-upload-button{
+                cursor: pointer;
+            }
+            &::-moz-file-upload-button{
+                cursor: pointer;
+            }
+        }
+    }
+
+    input[type="color"]{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        padding: 10px;
+        background: #F5F5F5;
+        border: 1px solid #E0E0E0;
+        border-radius: 50%;
+
+        &::-webkit-color-swatch-wrapper{
+            padding: 0;
+        }
+
+        &::-webkit-color-swatch{
+            border: none;
+            border-radius: 50%;
+        }
+
+        &::-moz-color-swatch{
+            border: none;
+            border-radius: 50%;
+        }
+    }
+
+    input[type="range2"]{
+        -webkit-appearance: none;
+        background: transparent;
+        margin: math.div($thumb-height, 2) 0;
+        width: $track-width;
+      
+        &::-moz-focus-outer {
+          border: 0;
+        }
+      
+        &:focus {
+          outline: 0;
+      
+          &::-webkit-slider-runnable-track {
+            background: lighten($track-color, $contrast);
+          }
+        }
+      
+        &::-webkit-slider-runnable-track {
+          @include track;
+          @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+          background: $track-color;
+          border: $track-border-width solid $track-border-color;
+          border-radius: $track-radius;
+        }
+      
+        &::-webkit-slider-thumb {
+          @include thumb;
+          -webkit-appearance: none;
+          margin-top: (math.div((math.div((-$track-border-width * 2 + $track-height), 2) - $thumb-height), 2));
+        }
+      
+        &::-moz-range-track {
+          @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+          @include track;
+          background: $track-color;
+          border: $track-border-width solid $track-border-color;
+          border-radius: $track-radius;
+          height: math.div($track-height, 2);
+        }
+      
+        &::-moz-range-thumb {
+          @include thumb;
+        }
+      
+        &:disabled {
+          &::-webkit-slider-thumb,
+          &::-moz-range-thumb,
+          &::-webkit-slider-runnable-track {
+            cursor: not-allowed;
+          }
+        }
+    }
+}
